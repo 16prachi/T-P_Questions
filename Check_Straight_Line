@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class TDP32 {
+
+    public static boolean checkStraightLine(int arr[][])
+    {
+        if(arr.length==2)
+        {
+            return true;
+        }
+        int dy=(arr[1][0]-arr[0][0]);
+        int dx=(arr[1][1]-arr[0][1]);
+        for(int i=2;i<arr.length;i++)
+        {
+            if(dx*(arr[i][0]-arr[1][0])!=dy*(arr[i][1]-arr[1][1]))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int m=sc.nextInt();
+        int n=sc.nextInt();
+        int arr[][]=new int[m][n];
+        for(int i=0;i<m;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                arr[i][j]=sc.nextInt();
+            }
+        }
+        System.out.println(checkStraightLine(arr));
+    }
+}
