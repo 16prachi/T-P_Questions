@@ -1,0 +1,32 @@
+import java.util.Scanner;
+import java.lang.Iterable;
+
+public class TDP34 {
+
+    
+    public static int coinChange2(int coins,int amount)
+    {
+        int dp[]=new int[amount+1];
+        dp[0]=1;
+       for (int coin : coins) {
+        for(int i=coin;i<amount+1;i++)
+        {
+            dp[i]+=dp[i-coin];
+        }
+        
+       }
+       return dp[amount];
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        int coins[]=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            coins[i]=sc.nextInt();
+        }
+        int amount=sc.nextInt();
+        System.out.println(coinChange2(coins,amount));
+    }
+        
+    }
