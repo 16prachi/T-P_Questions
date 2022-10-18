@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class TDP10 {
+
+    public static boolean happyNumber(int n)
+    {
+        List<Integer>num=new ArrayList<>();
+        while(n!=1)
+        {
+            int temp=n;
+            n=0;
+            while(temp>0)
+            {
+                n=n+(int)Math.pow((temp%10),2);
+                temp=temp/10;
+            }
+            if(num.contains(n))
+            {
+                return false;
+            }
+            else{
+                num.add(n);
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        System.out.println(happyNumber(n));
+    }
+    
+}
